@@ -6,8 +6,27 @@
    <title>To Do App</title>
 </head>
 <body>
-   <h1>My To do app</h1>
-   <h2>This is awesome</h2>
-   <h3>Mula</h3>
+   <h1>To Do List</h1>
+   <div>
+      <form action="/" method="post">
+         <input type="text" name="title">
+         <input type="submit" value="Add task">
+      </form>
+   </div>
+   <h4>All the task</h4>
+   <div>
+      {% for task in tasks %}
+         <p>{{ task.title }} created on {{ task.date }}</p>
+         <form action="./update" method="POST">
+            <input type="hidden" value="{{ task.title }}" name="oldTask">
+            <input type="text" value="{{ task.title }}" name="newTask">
+            <input type="submit" value="update">
+         </form>
+         <form action="./delete" method="POST">
+            <input type="hidden" value="{{ task.title }}" name="task">
+            <input type="submit" value="Delete">
+         </form>
+      {% endfor %}
+   </div>
 </body>
 </html>
