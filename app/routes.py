@@ -19,7 +19,7 @@ def home():
          print("Failed to add Task")
          print(e)
    tasks = Task.query.all()
-   return render_template('index.html', tasks=tasks)
+   return render_template('index.html', tasks=tasks, form=form)
 
 @app.route("/update", methods=["POST"])
 def update():

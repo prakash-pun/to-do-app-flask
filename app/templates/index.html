@@ -3,25 +3,28 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
    <title>To Do App</title>
 </head>
 <body>
-   <h1>To Do List</h1>
-   <div>
-      <form action="/" method="post">
-         <input type="text" name="title">
-         <input type="submit" value="Add task">
-      </form>
-   </div>
-   <h4>All the task</h4>
-   <div>
+   <div class="container">
+         <form action="/" method="post">
+            <div class="input-group">
+               {{ form.csrf_token }}
+               {{ form.title(class="submit-field", placeholder='New Item') }}
+               {{ form.submit(class="add-btn btn") }}
+            </div>
+         </form>
+      
       {% for task in tasks %}
-         <p>{{ task.title }} created on {{ task.date }}</p>
+         <p>{{ task.title }} </p>
          <form action="./update" method="POST">
             <input type="hidden" value="{{ task.title }}" name="oldTask">
             <input type="text" value="{{ task.title }}" name="newTask">
             <input type="submit" value="update">
          </form>
+         
          <form action="./delete" method="POST">
             <input type="hidden" value="{{ task.title }}" name="task">
             <input type="submit" value="Delete">
