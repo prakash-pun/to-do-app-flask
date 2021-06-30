@@ -18,17 +18,22 @@
          </form>
       
       {% for task in tasks %}
-         <p>{{ task.title }} </p>
-         <form action="./update" method="POST">
-            <input type="hidden" value="{{ task.title }}" name="oldTask">
-            <input type="text" value="{{ task.title }}" name="newTask">
-            <input type="submit" value="update">
-         </form>
-         
-         <form action="./delete" method="POST">
-            <input type="hidden" value="{{ task.title }}" name="task">
-            <input type="submit" value="Delete">
-         </form>
+         <p>{{ task.title }}</p>
+         <div class="update-form">
+            <div>
+               <form action="./update" method="POST">
+                  <input class="form-update" type="hidden" value="{{ task.title }}" name="oldTask">
+                  <input class="form-update" type="text" value="{{ task.title }}" name="newTask">
+                  <input class="update" type="submit" value="update">
+               </form>
+            </div>
+            <div>
+               <form action="./delete" method="POST">
+                  <input type="hidden" value="{{ task.title }}" name="task">
+                  <input class="delete" type="submit" value="Delete">
+               </form>
+            </div>
+         </div>
       {% endfor %}
    </div>
 </body>

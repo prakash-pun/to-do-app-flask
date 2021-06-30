@@ -9,3 +9,5 @@ $ env\Scripts\activate
 $ pip install -r requirements.txt
 $ flask run
 ```
+
+- create `task.db` sqlite database
